@@ -1,0 +1,45 @@
+filters:
+  and:
+    - file.hasTag("type/paper")
+properties:
+  relevance:
+    displayName: Relevance
+  questions:
+    displayName: Questions
+views:
+  - type: table
+    name: All papers
+    order:
+      - file.name
+      - year
+      - venue
+      - peer_reviewed
+      - relevance
+      - questions
+      - tags
+    sort:
+      - property: year
+        direction: DESC
+  - type: table
+    name: This question
+    filters:
+      and:
+        - questions.contains(this.id)
+    order:
+      - file.name
+      - year
+      - relevance
+      - tags
+  - type: table
+    name: This topic
+    filters:
+      and:
+        - 'this.topics.filter(topics.contains(value)).length > 0'
+    order:
+      - file.name
+      - year
+      - relevance
+      - questions
+    sort:
+      - property: year
+        direction: DESC

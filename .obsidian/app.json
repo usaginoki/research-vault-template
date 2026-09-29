@@ -1,0 +1,10 @@
+{
+  "attachmentFolderPath": "Attachments",
+  "newLinkFormat": "shortest",
+  "useMarkdownLinks": false,
+  "userIgnoreFilters": [
+    "_tools/",
+    ".venv/",
+    "Templates/"
+  ]
+}

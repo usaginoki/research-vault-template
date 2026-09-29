@@ -1,0 +1,111 @@
+filters:
+  and:
+    - file.inFolder("Backlog")
+    - file.ext == "md"
+properties:
+  file.name:
+    displayName: Candidate
+  published:
+    displayName: Date
+  relevance:
+    displayName: Core/adj.
+  why:
+    displayName: Why relevant
+  found_by:
+    displayName: Found by
+  cited_by:
+    displayName: Cited by
+views:
+  - type: table
+    name: Process next
+    filters:
+      and:
+        - status == "candidate"
+        - priority == 1
+    order:
+      - file.name
+      - published
+      - venue
+      - relevance
+      - manipulation
+      - outcome
+      - why
+      - url
+    sort:
+      - property: published
+        direction: DESC
+  - type: table
+    name: Candidates by priority
+    filters:
+      and:
+        - status == "candidate"
+    groupBy:
+      property: priority
+      direction: ASC
+    order:
+      - file.name
+      - published
+      - relevance
+      - topics
+      - why
+      - found_by
+      - cited_by
+    sort:
+      - property: published
+        direction: DESC
+  - type: table
+    name: In processing
+    filters:
+      and:
+        - status == "processing"
+    order:
+      - file.name
+      - citekey
+      - topics
+      - pdf_url
+  - type: table
+    name: This topic
+    filters:
+      and:
+        - status == "candidate"
+        - this.topics.filter(topics.contains(value)).length > 0
+    groupBy:
+      property: priority
+      direction: ASC
+    order:
+      - file.name
+      - published
+      - relevance
+      - why
+  - type: table
+    name: Cited by this paper
+    filters:
+      and:
+        - file.hasLink(this.file)
+    order:
+      - file.name
+      - status
+      - priority
+      - why
+  - type: table
+    name: Rejected
+    filters:
+      and:
+        - status == "rejected"
+    order:
+      - file.name
+      - topics
+      - reason
+      - added
+  - type: table
+    name: All
+    order:
+      - file.name
+      - status
+      - priority
+      - topics
+      - published
+      - found_by
+    sort:
+      - property: priority
+        direction: ASC
