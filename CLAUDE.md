@@ -22,10 +22,13 @@ When the user gives a research question with sub-questions:
 5. **Write paper notes** with subagents, a few papers each, using the brief below. Promote each
    candidate note into `Papers/` (see README). Relevant references found in these papers become new
    candidate notes with `cited_by: ["[[<paper note>]]"]`.
-6. **Synthesise**: write each question note from the papers' "Relevance to research questions"
+6. **Citations**: `uv run _tools/citations.py` links papers and candidates (`cites`, `cited_by`,
+   `cited_by_count`) and reports frequently cited papers missing from the vault; raise the priority of
+   candidates cited by many processed papers and consider adding the reported ones.
+7. **Synthesise**: write each question note from the papers' "Relevance to research questions"
    sections (cite with wikilinks, add comparison tables, gaps), then a session note in `Sessions/`
    from `Templates/Session.md`.
-7. **Verify**: `python3 _tools/check_vault.py` must report no problems; spot-check a few numbers
+8. **Verify**: `python3 _tools/check_vault.py` must report no problems; spot-check a few numbers
    against `.cache/docling/<key>/<key>.md`.
 
 ## Brief for paper-note subagents

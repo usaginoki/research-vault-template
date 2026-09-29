@@ -5,10 +5,13 @@ __pycache__/
 # docling output (large, regenerable with _tools/extract_all.sh)
 .cache/
 
-# third-party paper PDFs: not redistributed; re-download with `uv run _tools/extract_all.py`
+# third-party paper PDFs: not redistributed (repo is public); re-download via _tools/extract_all.sh
 Attachments/**/*.pdf
 
 # Obsidian per-device UI state
 .obsidian/workspace*.json
 .obsidian/cache
 .trash/
+
+# secrets (e.g. S2_API_KEY)
+.env

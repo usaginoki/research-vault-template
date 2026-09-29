@@ -34,7 +34,7 @@ views:
     name: This topic
     filters:
       and:
-        - 'this.topics.filter(topics.contains(value)).length > 0'
+        - this.topics.filter(topics.contains(value)).length > 0
     order:
       - file.name
       - year
@@ -42,4 +42,15 @@ views:
       - questions
     sort:
       - property: year
+        direction: DESC
+  - type: table
+    name: Most cited in vault
+    order:
+      - file.name
+      - year
+      - cited_by_count
+      - relevance
+      - cited_by
+    sort:
+      - property: cited_by_count
         direction: DESC

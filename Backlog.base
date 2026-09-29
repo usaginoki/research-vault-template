@@ -35,6 +35,22 @@ views:
       - property: published
         direction: DESC
   - type: table
+    name: Most cited
+    filters:
+      and:
+        - status == "candidate"
+        - cited_by_count > 0
+    order:
+      - file.name
+      - cited_by_count
+      - priority
+      - published
+      - why
+      - cited_by
+    sort:
+      - property: cited_by_count
+        direction: DESC
+  - type: table
     name: Candidates by priority
     filters:
       and:

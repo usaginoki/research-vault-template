@@ -13,6 +13,9 @@ pdf: "[[<citekey>.pdf]]"
 topics: []
 questions: []
 relevance: core
+cites: []
+cited_by: []
+cited_by_count: 0
 tags:
   - type/paper
   - relevance/core

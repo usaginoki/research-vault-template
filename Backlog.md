@@ -16,6 +16,9 @@ The tables below are live views of [[Backlog.base]]. Sort by clicking a column h
 ## Process next
 ![[Backlog.base#Process next]]
 
+## Most cited by processed papers
+![[Backlog.base#Most cited]]
+
 ## In processing
 ![[Backlog.base#In processing]]
 

@@ -17,6 +17,7 @@ outcome: ""
 why: ""
 found_by: []
 cited_by: []
+cited_by_count: 0
 added: YYYY-MM-DD
 tags:
   - type/candidate

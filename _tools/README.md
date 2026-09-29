@@ -88,6 +88,20 @@ Filenames are `<citekey> - <short title>`. Rejected candidates stay with `status
 searches don't resurface them. Before adding a candidate, search the vault for its arXiv id
 (`check_vault.py` also flags duplicate arXiv ids). `Backlog/` is hidden from the graph (`-path:Backlog`).
 
+## Citations
+`uv run _tools/citations.py` fetches each paper's full reference list from Semantic Scholar (cached in
+`.cache/citations/`) and matches it against `Papers/` and `Backlog/` by arXiv id, DOI or title. It owns
+these properties (recomputed on every run, don't edit by hand):
+- papers: `cites` (vault notes it cites), `cited_by` + `cited_by_count` (processed papers citing it)
+- candidates: `cited_by` (merged with hand-added entries) + `cited_by_count`
+
+It also prints references *not* in the vault that several processed papers cite (backward snowball;
+`--add-min N` turns those cited by ≥ N papers into candidate notes with `found_by: [citations/backward]`),
+and with `--forward` papers citing several processed papers. Views: `Backlog.base#Most cited`,
+`Papers.base#Most cited in vault`. Rerun after processing new papers. Set `S2_API_KEY` (in `~/.zshrc` or a
+git-ignored `.env`) to use a Semantic Scholar API key; without one it paces requests at 1 per 3 s.
+
+
 ## Git
 PDFs (`Attachments/**/*.pdf`) and the docling cache (`.cache/`) are git-ignored (most papers may not be
 redistributed). After a fresh clone run `uv sync && uv run _tools/extract_all.py` to re-download and

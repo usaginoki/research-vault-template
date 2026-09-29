@@ -17,7 +17,8 @@ Obsidian Bases.
 ```
 Papers/       processed papers          Templates/   Paper, Candidate, Question, Session
 Questions/    one note per question      _tools/      extract_all.py, extract.py, pick_figure.sh,
-Sessions/     research-session summaries              check_vault.py, README.md (conventions)
+Sessions/     research-session summaries              check_vault.py, citations.py,
+                                         README.md (conventions)
 Backlog/      candidate papers           Papers.base, Backlog.base   live tables
 Attachments/  PDFs (ignored) + figures   Backlog.md   backlog hub
 ```
@@ -29,6 +30,7 @@ Conventions (properties, tags, topics, workflow): [`_tools/README.md`](_tools/RE
 |---|---|
 | `uv run _tools/extract_all.py [citekey …]` | download + extract every paper note / `status: processing` candidate missing from the cache |
 | `_tools/pick_figure.sh <key> <fig.png>` | copy an extracted figure into `Attachments/<key>/` and print its embed |
+| `uv run _tools/citations.py [--forward] [--add-min N]` | fill `cites` / `cited_by` / `cited_by_count` from Semantic Scholar + PDF text; report papers cited by several of yours but not in the vault |
 | `python3 _tools/check_vault.py` | check properties, question tags, candidate status, duplicate arXiv ids, links and embeds |
 
 ## Obsidian settings included
